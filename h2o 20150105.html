@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ATD share site</title>
+	<meta name="description" content="">
+	<meta name="author" content="ishikawakouji">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">ATD share site</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/machine-learning.html">Machine Learning</a></li>
+					<li ><a href="/category/pelican.html">Pelican</a></li>
+					<li ><a href="/category/setup.html">setup</a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<h3>Blogroll</h3>
+			<ul>
+				<li><a href="#">This site</a></li>
+				<li><a href="https://www.coursera.org/">coursera</a></li>
+			</ul>
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="#">This group does not have link</a></li>
+			</ul>
+			</div>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>機械学習の勉強</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/h2o 20150105.html">2015-01-05 17:05:00+09:00</a>
+by <a class="url fn" href="/author/ishikawakouji.html">ishikawakouji </a>
+ in <a href="/category/machine-learning.html">Machine Learning</a>
+tags: <a href="/tag/machine-learning.html">machine learning</a> <a href="/tag/0xdata.html">0xdata</a> <a href="/tag/h2o.html">H2O</a> </div>
+		<div><h1>H2Oとは</h1>
+<p>0xdataが提供している機械学習のテストをWebのUIで比較的簡単にやってみることができるツール。</p>
+<p>サーバはJavaで動作。Web以外にサーバへのアクセス方法がAPIとして提供されているらしいが、
+まだ、その内容は公開されていない感じ。</p>
+<p>また、オンメモリで動いているらしいので、起動時のJREのメモリの与え方で、限界が
+決まるかもしれない。</p>
+<h1>ダウンロードで動かす</h1>
+<p>配布元はこちら。</p>
+<div class="highlight"><pre>http://0xdata.com/
+</pre></div>
+
+
+<p>適当なものをダウンロードしてくる。Javaの環境は別途構築しておく。</p>
+<p>起動は、こんな感じ。</p>
+<div class="highlight"><pre>java -Xmx1g -jar h2o.jar
+</pre></div>
+
+
+<p>オプションは、一例。この場合の Xmx1g はヒープサイズを1GB確保している。</p>
+<p>ブラウザからアクセスするには、ローカルをつつく。</p>
+<div class="highlight"><pre>http://localhost:54321/
+</pre></div>
+
+
+<p>外部からのアクセスを許可していれば、ネットワーク上のブラウザから
+利用することがたぶん可能だが、やっていない。</p>
+<h1>軽く使い方</h1>
+<p>RandomForest や DeepLearning がさらっとできる。</p>
+<p>ページの上部にメニューがあるので、主にここから動かす。</p>
+<h2>データの用意</h2>
+<p>ローカルにデータを準備しておく。これをサーバにアップロードする。
+データは、ZIPで圧縮しているものも利用できるようだ。</p>
+<p>Data/Upload でUpload画面になる。アップロードしたいファイルを
+選択すればいい。</p>
+<p>次に、 Parseする。内部形式のデータに変換しているものと思われる。
+Uploadが完了すると、自動的に遷移する。</p>
+<p>CSVとかだと、自動的に内容を判断してくれる。判断した結果に問題が
+なければ、そのまま Submit する。内部的には、Uploadしたファイル名の
+拡張子を hex にした名前で登録されており、データを参照する key
+として利用できる。</p>
+<h2>モデルを動かす</h2>
+<p>メニュー内の Model を選択すると、機械学習として利用できる
+各種モデルが並ぶ。ここから適当なものを選択する。</p>
+<p>おもな共通入力部分を示す。</p>
+<ul>
+<li>source には、パースした内部形式データ(hex)を指定する。
+補完してくれるので、入力は比較的簡単。</li>
+<li>response には、データ内の出力値部分を指定する。CSVで1行目にラベル
+が付いているようであれば、コレが選択肢に並ぶ。</li>
+<li>赤いアスタリスクが必須項目のようだ。</li>
+<li>テスト用のデータがあれば、 validation に内部形式データ(hex)を
+設定する。</li>
+</ul>
+<p>まずは、デフォルトで動かしてみる。あとは、各種パラーメータを
+いろいろ修正してやってみるのは、他のツールと同じだろう。</p></div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; ishikawakouji</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>
