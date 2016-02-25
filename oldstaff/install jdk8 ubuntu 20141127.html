@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ATD share site</title>
+	<meta name="description" content="">
+	<meta name="author" content="ishikawakouji">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">ATD share site</a>
+			<ul class="nav">
+					<li ><a href="/category/machine-learning.html">Machine Learning</a></li>
+					<li ><a href="/category/pelican.html">Pelican</a></li>
+					<li class="active"><a href="/category/setup.html">setup</a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<h3>Blogroll</h3>
+			<ul>
+				<li><a href="#">This site</a></li>
+				<li><a href="https://www.coursera.org/">coursera</a></li>
+			</ul>
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="#">This group does not have link</a></li>
+			</ul>
+			</div>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>JDK8をUbuntu系にインストールする</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/install jdk8 ubuntu 20141127.html">2014-12-11 17:49:00+09:00</a>
+by <a class="url fn" href="/author/ishikawakouji.html">ishikawakouji </a>
+ in <a href="/category/setup.html">setup</a>
+tags: <a href="/tag/linux.html">Linux</a> <a href="/tag/ubuntu.html">Ubuntu</a> <a href="/tag/lubuntu.html">lubuntu</a> <a href="/tag/java.html">Java</a> <a href="/tag/jdk.html">JDK</a> </div>
+		<div><h1>マニュアルでインストール</h1>
+<p>普通にインストールすると openjdk がインストールされるので、
+OracleのJDKをインストールするのであれば、手でインストール</p>
+<p>参照先：<a href="http://astah.change-vision.com/ja/feature/install-linux-debian.html">Debian系LinuxへOracle JDKをインストールする</a></p>
+<h2>JDK8をダウンロード</h2>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle JDK</a>
+からダウンロードする。</p>
+<h2>展開して移動</h2>
+<div class="highlight"><pre><span class="nv">$ </span>tar zxvf jdk-8u25-linux-x64.tar.gz
+<span class="nv">$ </span>sudo mkdir /usr/lib/jvm
+<span class="nv">$ </span>sudo mv ./jdk1.8.0_25 /usr/lib/jvm/jdk1.8.0
+</pre></div>
+
+
+<h3>セットアップ</h3>
+<p>まず、登録。</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo update-alternatives --install <span class="s2">&quot;/usr/bin/java&quot;</span> <span class="s2">&quot;java&quot;</span> <span class="s2">&quot;/usr/lib/jvm/jdk1.8.0/bin/java&quot;</span> 1
+<span class="nv">$ </span>sudo update-alternatives --install <span class="s2">&quot;/usr/bin/javac&quot;</span> <span class="s2">&quot;javac&quot;</span> <span class="s2">&quot;/usr/lib/jvm/jdk1.8.0/bin/javac&quot;</span> 1
+<span class="nv">$ </span>sudo update-alternatives --install <span class="s2">&quot;/usr/bin/javaws&quot;</span> <span class="s2">&quot;javaws&quot;</span> <span class="s2">&quot;/usr/lib/jvm/jdk1.8.0/bin/javaws&quot;</span> 1
+</pre></div>
+
+
+<p>次に選択。あらかじめ java は抜いているので、競合はない。</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo update-alternatives --config java
+リンクグループ java に <span class="m">1</span> つの alternative のみがあります <span class="o">(</span>/usr/bin/java が提供<span class="o">)</span>: /usr/lib/jvm/jdk1.8.0/bin/java
+設定は行いません。
+</pre></div>
+
+
+<p>バージョンを確認。</p>
+<div class="highlight"><pre><span class="nv">$ </span>java -version
+java version <span class="s2">&quot;1.8.0_25&quot;</span>
+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_25-b17<span class="o">)</span>
+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.25-b02, mixed mode<span class="o">)</span>
+</pre></div>
+
+
+<p>おけ。
+さらに、ダメ押し？</p>
+<div class="highlight"><pre>sudo update-alternatives --config javac
+sudo update-alternatives --config javaws
+</pre></div></div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; ishikawakouji</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

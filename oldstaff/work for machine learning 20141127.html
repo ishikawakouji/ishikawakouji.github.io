@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>ATD share site</title>
+	<meta name="description" content="">
+	<meta name="author" content="ishikawakouji">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">ATD share site</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/machine-learning.html">Machine Learning</a></li>
+					<li ><a href="/category/pelican.html">Pelican</a></li>
+					<li ><a href="/category/setup.html">setup</a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<h3>Blogroll</h3>
+			<ul>
+				<li><a href="#">This site</a></li>
+				<li><a href="https://www.coursera.org/">coursera</a></li>
+			</ul>
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="#">This group does not have link</a></li>
+			</ul>
+			</div>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>機械学習の勉強</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/work for machine learning 20141127.html">2014-11-27 14:05:00+09:00</a>
+by <a class="url fn" href="/author/ishikawakouji.html">ishikawakouji </a>
+ in <a href="/category/machine-learning.html">Machine Learning</a>
+tags: <a href="/tag/machine-learning.html">machine learning</a> <a href="/tag/coursera.html">coursera</a> </div>
+		<div><h1>線形回帰</h1>
+<h2>Feature Scaling</h2>
+<p>Gradient Descent(最急降下法) の Feature Scaling というトリックの勉強</p>
+<p>これは、各featureの取りうる値の範囲を−１~１程度の範囲にするもの。
+まじめにやる場合は正規化になる。ただし、各featureの範囲を完全に揃える必要はない。</p>
+<h2>学習係数の決め方</h2>
+<p>傾き係る係数の決め方。実際には、反復回数とコスト関数のグラフをプロットして、様子を見る。
+これは、必ずしも収束方向に向かっていない場合を発見する場合にも有効。</p>
+<p>いくらか反復させて、発散するちょっと手前まで大きくするような方法がいいらしい。</p>
+<h2>feature(特徴)の選び方</h2>
+<p>得られている特徴だけでなく、掛けあわせたり、二乗したり、平方根をとったり、することも可能。
+これらを別々の特徴として、多項式でのコスト関数と見ることができる。</p>
+<p>後ほど、これらを自動的に選択するアルゴリズムも紹介されるらしい。</p>
+<h2>正規方程式</h2>
+<p>行列を使って、一発で解く方法。 この場合、特徴量のfeature scalingも不要。</p>
+<p><span class="math">\(x_0=1\)</span> のを特徴に追加して、m個のサンプルに対し
+<div class="math">$$
+X = [x_i^{(m)}]
+$$</div>
+のような行列と
+<div class="math">$$
+y = [y^{(m)}]
+$$</div>
+という結果のベクトルを用いて、パラメータθについて
+<div class="math">$$
+\Theta = (X^T X)^{-1} X y
+$$</div>
+を解くというもの。</p>
+<p>ただし、前提がある。<span class="math">\((X^T X)^{-1}\)</span>が失敗するようであれば、以下を確認する。</p>
+<ul>
+<li>特徴の間に線形な依存が無いこと。例えば <span class="math">\(x_2 = 2x_1\)</span>。これは冗長な特徴があるということ</li>
+<li>特徴の個数nに対して学習するサンプル数mが充分にある</li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; ishikawakouji</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>
