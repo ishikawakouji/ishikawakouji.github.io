@@ -10,3 +10,16 @@
 [def]: ./cameraAndQRcode.html
 
 ## 与えられた CSV データでグラフを作る
+まず、テキストエリア内の CSV形式文字列をパースして、グラフにできるか。
+
+[csvAndChart.html][def3]
+
+[def3]: ./csvAndChart.html
+
+その後、QRcode reader と合成
+
+[QRcodeAndChart.html][def2]
+
+[def2]: ./QRcodeAndChart.html
+
+update を一発でやってもいいが、あとで。
