@@ -1,6 +1,11 @@
 # webで何ができるか
 しかも、静的ファイルだけみたいに
 
+## バーを動かす
+[moveRect.html][def4]
+
+[def4]: ./moveRect.html
+
 ## QRコード
 カメラを起動して、QRコードが入っていたらデコードする
 [こちら](http://dotnsf.blog.jp/archives/1078584611.html)を参考にしました。
