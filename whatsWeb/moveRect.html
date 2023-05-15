@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #canvas {
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas"></div>
+
+    <script>
+        // キャンバスのサイズ
+        var canvasWidth = window.innerWidth;
+        var canvasHeight = window.innerHeight;
+
+        // 長方形の初期位置とサイズ
+        var rectX = 0;
+        var rectY = 0;
+        var rectWidth = canvasWidth;
+        var rectHeight = 100;
+
+        // キャンバスを作成
+        var canvas = document.getElementById("canvas");
+        canvas.style.width = canvasWidth + "px";
+        canvas.style.height = canvasHeight + "px";
+
+        // 長方形を作成
+        var rectangle = document.createElement("div");
+        rectangle.style.position = "absolute";
+        rectangle.style.width = rectWidth + "px";
+        rectangle.style.height = rectHeight + "px";
+        rectangle.style.backgroundColor = "white";
+        canvas.appendChild(rectangle);
+
+        // アニメーションのフレームレート
+        var fps = 60;
+
+        // アニメーションのメインループ
+        function animate() {
+            // 長方形を移動させる
+            rectY += 2;
+
+            // 長方形がキャンバスの外に出たら初期位置に戻す
+            if (rectY > canvasHeight - rectHeight) {
+                rectY = 0;
+            }
+
+            // 長方形の位置を更新
+            rectangle.style.left = rectX + "px";
+            rectangle.style.top = rectY + "px";
+
+            // 次のフレームを予約
+            setTimeout(animate, 1000 / fps);
+        }
+
+        // アニメーションを開始
+        animate();
+    </script>
+</body>
+</html>
