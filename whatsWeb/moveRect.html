@@ -38,12 +38,12 @@
         canvas.appendChild(rectangle);
 
         // アニメーションのフレームレート
-        var fps = 60;
+        var fps = 120;
 
         // アニメーションのメインループ
         function animate() {
             // 長方形を移動させる
-            rectY += 2;
+            rectY += 6;
 
             // 長方形がキャンバスの外に出たら初期位置に戻す
             if (rectY > canvasHeight - rectHeight) {
